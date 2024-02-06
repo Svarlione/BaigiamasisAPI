@@ -4,6 +4,7 @@ using BaigiamasisAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BaigiamasisAPI.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240206215743_bandymas")]
+    partial class bandymas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,41 +54,6 @@ namespace BaigiamasisAPI.Migrations
                         .IsUnique();
 
                     b.ToTable("Image");
-                });
-
-            modelBuilder.Entity("BaigiamasisAPI.Models.LoginInfo", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<byte[]>("Password")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("LoginInfo");
                 });
 
             modelBuilder.Entity("BaigiamasisAPI.Models.User", b =>
@@ -166,17 +134,6 @@ namespace BaigiamasisAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BaigiamasisAPI.Models.LoginInfo", b =>
-                {
-                    b.HasOne("BaigiamasisAPI.Models.User", "User")
-                        .WithOne("LoginInfo")
-                        .HasForeignKey("BaigiamasisAPI.Models.LoginInfo", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("BaigiamasisAPI.Models.UserAdress", b =>
                 {
                     b.HasOne("BaigiamasisAPI.Models.User", null)
@@ -190,9 +147,6 @@ namespace BaigiamasisAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("LivingInfo");
-
-                    b.Navigation("LoginInfo")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

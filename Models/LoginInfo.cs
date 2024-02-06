@@ -5,7 +5,7 @@ namespace BaigiamasisAPI.Models
 {
     public class LoginInfo //user infomation
     {
-
+        [Key]
         public long Id { get; set; }
         public string UserName { get; set; } = string.Empty;
         public byte[] Password { get; set; } = null!;
@@ -14,6 +14,7 @@ namespace BaigiamasisAPI.Models
 
         [ForeignKey(nameof(User))]
         public long UserId { get; set; }
+        public User User { get; set; }
 
 
     }

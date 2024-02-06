@@ -2,7 +2,7 @@
 
 namespace BaigiamasisAPI.DTO
 {
-    public class AddressDto
+    public class AdressDto
     {
         [Required(ErrorMessage = "Miestas yra privalomas")]
         public string Town { get; set; }

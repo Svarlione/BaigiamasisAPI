@@ -21,7 +21,7 @@ namespace BaigiamasisAPI.DTO
         public LoginInfoDto LoginInfo { get; set; }
 
         [Required(ErrorMessage = "Adreso informacija yra privaloma")]
-        public AddressDto Address { get; set; }
+        public AdressDto Address { get; set; }
 
         [Required(ErrorMessage = "Nuotrauka yra privaloma")]
         public ImageDto Image { get; set; }

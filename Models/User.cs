@@ -12,6 +12,8 @@ namespace BaigiamasisAPI.Models
         public long PersonalIndefication { get; set; }
         public string Email { get; set; } = string.Empty;
 
+        public LoginInfo LoginInfo { get; set; }
+
 
         public List<UserAdress> LivingInfo { get; set; } = new List<UserAdress>();
 
