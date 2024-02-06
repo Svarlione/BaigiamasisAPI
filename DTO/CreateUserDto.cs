@@ -1,14 +1,33 @@
-﻿namespace BaigiamasisAPI.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BaigiamasisAPI.DTO
 {
     public class CreateUserDto
     {
+        [Required(ErrorMessage = "Vardas yra privalomas")]
         public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Pavardė yra privaloma")]
         public string LaststName { get; set; }
-        public long PersonalIndefication { get; set; }
+
+        [Required(ErrorMessage = "Asmens kodas yra privalomas")]
+        public string PersonalIndefication { get; set; }
+
+        [Required(ErrorMessage = "El. paštas yra privalomas")]
+        [EmailAddress(ErrorMessage = "Netinkamas el. pašto formatas")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Prisijungimo informacija yra privaloma")]
         public LoginInfoDto LoginInfo { get; set; }
+
+        [Required(ErrorMessage = "Adreso informacija yra privaloma")]
         public AddressDto Address { get; set; }
+
+        [Required(ErrorMessage = "Nuotrauka yra privaloma")]
         public ImageDto Image { get; set; }
-        public long PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Telefono numeris yra privalomas")]
+        [RegularExpression(@"^\d{9}$", ErrorMessage = "Netinkamas telefono numerio formatas")]
+        public string PhoneNumber { get; set; }
     }
 }
